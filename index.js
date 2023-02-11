@@ -4,6 +4,12 @@
 */
 
 // ===================================================
+const promtWorld = document.querySelector('#alertInput');
+const promtBtn = document.querySelector('#alertButton');
+promtBtn.addEventListener('click', () => {
+    alert(promtWorld.value);
+})
+
 // ===================================================
 
 /*
@@ -13,6 +19,16 @@
 */
 
 // ===================================================
+const btnEl = document.querySelector('#swapButton');
+const firstInputEl = document.querySelector('#leftSwapInput');
+const secondInputEl = document.querySelector('#rightSwapInput');
+
+btnEl.addEventListener('click', () => {
+    const firstValue = firstInputEl.value;
+    const secondValue = secondInputEl.value;
+    firstInputEl.value = secondValue
+    secondInputEl.value = firstValue
+})
 // ===================================================
 
 /*
@@ -23,6 +39,14 @@
 */
 
 // ===================================================
+const passwordInput = document.querySelector('#passwordInput');
+const btn = document.querySelector('#passwordButton');
+
+const onClick = (event) => {
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password'
+    event.target.textContent = passwordInput.type === 'password' ? 'Раскрыть' : 'Скрыть'
+}
+btn.addEventListener('click', onClick)
 // ===================================================
 
 /*
@@ -31,6 +55,21 @@
 */
 
 // ===================================================
+const decreaseBtn = document.querySelector('#decrease');
+const increaseBtn = document.querySelector('#increase');
+const boxEl = document.querySelector('#box');
+
+increaseBtn.addEventListener('click', () => {
+    const size = boxEl.offsetWidth;
+    boxEl.style.width = `${size + 10}px`
+    boxEl.style.height = `${size + 10}px`
+})
+
+decreaseBtn.addEventListener('click', () => {
+    const size = boxEl.offsetWidth;
+    boxEl.style.width = `${size - 10}px`
+    boxEl.style.height = `${size - 10}px`
+})
 // ===================================================
 
 /*
