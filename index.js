@@ -80,6 +80,16 @@ https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
 */
 
 // ===================================================
+const placeEl = document.querySelector('#place');
+
+window.addEventListener('click', (event) => {
+    // if(event.target === placeEl) {
+    //     console.log('it is good')
+    // }
+    if(placeEl.contains(event.target)) {
+        console.log('it is good')
+    }
+})
 // ===================================================
 
 /*
@@ -89,6 +99,14 @@ https://developer.mozilla.org/en-US/docs/Web/API/Node/contains
 */
 
 // ===================================================
+const doubleBtn = document.querySelector('#double');
+const allListItems = document.querySelectorAll('.listItem');
+
+doubleBtn.addEventListener('click', () => {
+    allListItems.forEach(item => {
+        item.textContent = +item.textContent * 2
+    })
+})
 // ===================================================
 
 /*
@@ -101,6 +119,41 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 */
 
 // ===================================================
+const cicleEl = document.querySelector('.outerCircle');
+cicleEl.addEventListener('click', () => {
+    window.addEventListener('mousemove', onMouseMove)
+    if(cicleEl.style.position === 'absolute') {
+        cicleEl.style.position = 'static'
+        window.removeEventListener('mousemove', onMouseMove)
+        return
+    }
+    
+})
+
+function onMouseMove (event) {
+    cicleEl.style.position = 'absolute'
+    cicleEl.style.top = `${event.pageY - 15}px`
+    cicleEl.style.left = `${event.pageX - 15}px`
+
+}
+
+
+//SashaHir
+// const circleEl = document.querySelector('.outerCircle')
+
+// circleEl.addEventListener('click', () => {
+//     window.addEventListener('mousemove', onMove)
+//     if (circleEl.style.position === 'absolute') {
+//         circleEl.style.position = 'static'
+//         window.removeEventListener('mousemove', onMove)
+//     }
+// })
+
+// function onMove(event) {
+//     circleEl.style.position = 'absolute'
+//     circleEl.style.top = `${event.pageY - 15}px`
+//     circleEl.style.left = `${event.pageX - 15}px`
+//}
 // ===================================================
 
 /*
@@ -111,6 +164,37 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 */
 
 // ===================================================
+const btnResult = document.querySelector('#resultButton');
+const list = document.querySelector('.statList');
+const sectionResult = document.querySelector('#resultSection');
+
+let sum = 0
+
+const stat = {}
+
+const onListClick = (event) => {
+    if (event.target.nodeName !== "BUTTON") {
+        return
+    }
+    sum += +event.target.dataset.number
+
+    if(stat[event.target.textContent]) {
+        stat[event.target.textContent] += 1
+    } else stat[event.target.textContent] = 1
+    // console.log(sum)
+}
+
+const onResultClick = () => {
+    sectionResult.innerHTML = 
+    `<p>Total: ${sum}</p><ul>${Object
+        .entries(stat)
+        .map(item => `<li>${item[0]} быда нажата ${item[1]} раз</li>`)
+        .join('')}</ul>`
+    console.log(stat)
+}
+
+list.addEventListener('click', onListClick)
+btnResult.addEventListener('click', onResultClick)
 // ===================================================
 
 /*
@@ -119,6 +203,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
 */
 
 // ===================================================
+
 // ===================================================
 
 /*
